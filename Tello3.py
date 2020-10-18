@@ -31,7 +31,7 @@ def recv():
             data, server = sock.recvfrom(1518)
             print(data.decode(encoding="utf-8"))
         except Exception:
-            print ('\n' datetime.now(), ' - Exit . . .\n')
+            print ('\n', datetime.now(), ' - Exit . . .\n')
             break
 
 
@@ -64,6 +64,6 @@ while True:
         sent = sock.sendto(msg, tello_address)
         print(datetime.now(), " - command sent to Tello: ", msg)
     except KeyboardInterrupt:
-        print ('\n' datetime.now(), ' - . . .\n')
+        print ('\n', datetime.now(), ' - . . .\n')
         sock.close()
         break
