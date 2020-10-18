@@ -31,15 +31,15 @@ def recv():
             data, server = sock.recvfrom(1518)
             print(data.decode(encoding="utf-8"))
         except Exception:
-            print ('\nExit . . .\n')
+            print ('\n' datetime.now(), ' - Exit . . .\n')
             break
 
 
-print ('\r\n\r\nTello Python3 Demo.\r\n')
+print ('\r\n\r\n', datetime.now(), ' - Tello Python3 Demo.\r\n')
 
-print ('Tello: command takeoff land flip forward back left right \r\n       up down cw ccw speed speed?\r\n')
+print (datetime.now(), ' - Tello: command takeoff land flip forward back left right \r\n       up down cw ccw speed speed?\r\n')
 
-print ('end -- quit demo.\r\n')
+print (datetime.now(), '- end -- quit demo.\r\n')
 
 
 #recvThread create
@@ -55,17 +55,15 @@ while True:
             break
 
         if 'end' in msg:
-            print ('...')
+            print (datetime.now(), ' - ...')
             sock.close()
             break
 
         # Send data
         msg = msg.encode(encoding="utf-8")
         sent = sock.sendto(msg, tello_address)
-        print(dateTimeObj.year, '/', dateTimeObj.month, '/', dateTimeObj.day)
-        print(dateTimeObj.hour, ':', dateTimeObj.minute, ':', dateTimeObj.second, ';', dateTimeObj.microsecond)
-         print("- command sent to Tello", msg)
+        print(datetime.now(), " - command sent to Tello: ", msg)
     except KeyboardInterrupt:
-        print ('\n . . .\n')
+        print ('\n' datetime.now(), ' - . . .\n')
         sock.close()
         break
