@@ -9,6 +9,7 @@ import threading
 import socket
 import sys
 import time
+from datetime import datetime
 
 
 host = ''
@@ -44,7 +45,7 @@ print ('end -- quit demo.\r\n')
 #recvThread create
 recvThread = threading.Thread(target=recv)
 recvThread.start()
-
+dateTimeObj = datetime.now()
 while True:
 
     try:
@@ -61,6 +62,9 @@ while True:
         # Send data
         msg = msg.encode(encoding="utf-8")
         sent = sock.sendto(msg, tello_address)
+        print(dateTimeObj.year, '/', dateTimeObj.month, '/', dateTimeObj.day)
+        print(dateTimeObj.hour, ':', dateTimeObj.minute, ':', dateTimeObj.second, ';', dateTimeObj.microsecond)
+         print("- command sent to Tello", msg)
     except KeyboardInterrupt:
         print ('\n . . .\n')
         sock.close()
